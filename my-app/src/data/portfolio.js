@@ -13,7 +13,7 @@ export const profile = {
   email: "muhammadhassanweb@gmail.com",
   location: "Charsadda, PK",
   available: true,
-  totalExperienceYears: "5+",
+  totalExperienceYears: "2+",
   socials: [
     {
       label: "GitHub",
@@ -37,6 +37,7 @@ export const profile = {
 export const navLinks = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
+  { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
@@ -78,6 +79,12 @@ const makeArt = (colors, seed = 42) => {
 
 export const avatarArt = makeArt(["#e6e1d6", "#111111", "#c9c2b4", "#8a8578"], 7);
 
+// Remote stock imagery from Unsplash — real photography used to flesh out the
+// project galleries alongside the hand-captured product screenshots.
+// `images.unsplash.com` is allow-listed in next.config.mjs.
+const unsplash = (id, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
 /* ------------------------------------------------------------------ */
 /* Projects                                                            */
 /* ------------------------------------------------------------------ */
@@ -91,7 +98,7 @@ export const projects = [
     year: "2025",
     duration: "10 Weeks",
     role: "Full-Stack Development, AI Integration",
-    stack: ["Express.js", "React", "Tailwind CSS", "AI API Integration"],
+    stack: ["Next.js", "Express.js", "React", "Tailwind CSS", "JWT Auth", "OpenAI API"],
     image: "/projects/lume-ai.png",
     gradient: gradient(paletteB[0], paletteB[3]),
     color: "#0f172a",
@@ -107,7 +114,11 @@ export const projects = [
       "3× faster iteration vs. manual scaffolding",
       "99.9% uptime across launch week",
     ],
-    gallery: ["/projects/lume-ai.png"],
+    gallery: [
+      "/projects/lume-ai.png",
+      unsplash("photo-1620712943543-bcc4688e7485"),
+      unsplash("photo-1677442136019-21780ecad995"),
+    ],
   },
   {
     slug: "luro-ai",
@@ -118,7 +129,7 @@ export const projects = [
     year: "2025",
     duration: "8 Weeks",
     role: "Full-Stack Development, API Design",
-    stack: ["Next.js", "AI APIs", "Node.js", "Express", "PDF Generation"],
+    stack: ["Next.js", "Node.js", "Express", "MongoDB", "Redis", "BullMQ", "Framer Motion"],
     image: "/projects/luro-ai.png",
     gradient: gradient(paletteE[0], paletteE[3]),
     color: "#c8a27a",
@@ -134,7 +145,11 @@ export const projects = [
       "PDF export generated in under 3 seconds",
       "78% reduction in manual copywriting time",
     ],
-    gallery: ["/projects/luro-ai.png"],
+    gallery: [
+      "/projects/luro-ai.png",
+      unsplash("photo-1611162617474-5b21e879e113"),
+      unsplash("photo-1611926653458-09294b3142bf"),
+    ],
   },
   {
     slug: "kokhan-ecommerce",
@@ -145,7 +160,7 @@ export const projects = [
     year: "2024",
     duration: "12 Weeks",
     role: "Full-Stack Development, MERN Architecture",
-    stack: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    stack: ["Next.js", "React", "Node.js", "Express", "MongoDB", "JWT Auth", "Stripe"],
     image: "/projects/kokhan-ecommerce.png",
     gradient: gradient(paletteC[0], paletteC[3]),
     color: "#d6c9a8",
@@ -161,11 +176,104 @@ export const projects = [
       "32% uplift in completed checkouts",
       "100% responsive across mobile and desktop",
     ],
-    gallery: ["/projects/kokhan-ecommerce.png"],
+    gallery: [
+      "/projects/kokhan-ecommerce.png",
+      unsplash("photo-1445205170230-053b83016050"),
+      unsplash("photo-1441986300917-64674bd600d8"),
+    ],
   },
 ];
 
 export const projectCategories = ["All", "AI Apps", "E-Commerce", "Web Platforms"];
+
+/* ------------------------------------------------------------------ */
+/* Skills — grouped by the layer of the stack I work across            */
+/* ------------------------------------------------------------------ */
+export const skillGroups = [
+  {
+    id: "frontend",
+    title: "Frontend",
+    caption: "Interfaces engineered for speed and detail",
+    items: [
+      "Next.js",
+      "React",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "Tailwind CSS",
+      "HTML5 & CSS3",
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend & APIs",
+    caption: "Scalable services and clean REST contracts",
+    items: [
+      "Node.js",
+      "Express.js",
+      "MERN Stack",
+      "REST APIs",
+      "GraphQL",
+      "Webhooks",
+    ],
+  },
+  {
+    id: "data",
+    title: "Databases & Auth",
+    caption: "Secure, reliable data and identity layers",
+    items: [
+      "MongoDB",
+      "Mongoose",
+      "PostgreSQL",
+      "Firebase Auth",
+      "JWT",
+      "Passport.js",
+      "NextAuth.js",
+    ],
+  },
+  {
+    id: "state",
+    title: "State Management",
+    caption: "Predictable data flow across complex UIs",
+    items: ["Redux Toolkit", "TanStack Query", "Context API", "Zustand"],
+  },
+  {
+    id: "caching",
+    title: "Caching, Queues & Realtime",
+    caption: "Background jobs and low-latency data",
+    items: ["Redis", "BullMQ", "Upstash", "Socket.IO", "Cron Jobs"],
+  },
+  {
+    id: "motion",
+    title: "Animation & 3D",
+    caption: "Motion that makes products feel alive",
+    items: ["Framer Motion", "GSAP", "Three.js", "Lenis"],
+  },
+  {
+    id: "tooling",
+    title: "Tooling & DevOps",
+    caption: "Ship, observe and iterate with confidence",
+    items: [
+      "Git & GitHub",
+      "Vercel",
+      "Docker",
+      "Postman",
+      "Cloudinary",
+      "Stripe",
+      "Nodemailer",
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI Integration",
+    caption: "LLM features wired into real products",
+    items: [
+      "OpenAI API",
+      "Streaming Responses",
+      "Prompt Engineering",
+      "Vector Search",
+    ],
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /* Services                                                            */
@@ -224,7 +332,7 @@ export const experience = [
   {
     company: "react-motion-kit",
     role: "Open-Source Maintainer",
-    period: "2022 — Present",
+    period: "2023 — Present",
     kind: "Open Source",
     summary:
       "Built and maintain an open-source library of reusable Framer Motion primitives — documented, tested and adopted across several production projects.",
@@ -234,7 +342,7 @@ export const experience = [
   {
     company: "Northbeam Studio",
     role: "Full-Stack Developer (MERN)",
-    period: "2021 — 2023",
+    period: "2023 — 2024",
     kind: "Work",
     summary:
       "Shipped high-end marketing sites, e-commerce platforms and web apps for international brands using the MERN stack and headless commerce.",
@@ -244,7 +352,7 @@ export const experience = [
   {
     company: "Freelance",
     role: "Independent Developer & Designer",
-    period: "2019 — 2021",
+    period: "2022 — 2023",
     kind: "Work",
     summary:
       "Partnered directly with founders and agencies to design, build and launch MVPs across e-commerce, SaaS and fintech.",

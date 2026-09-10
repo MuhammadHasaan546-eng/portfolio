@@ -167,7 +167,7 @@ export default function Experience() {
 
         <SectionHeading
           light
-          index="03"
+          index="04"
           label="Experience"
           headline={
             <>
