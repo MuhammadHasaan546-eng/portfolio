@@ -38,7 +38,7 @@ function SocialColumn() {
           <a
             href={s.url}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             aria-label={s.label}
             className="group flex items-center gap-2 text-neutral-600 transition-colors duration-300 hover:text-neutral-900 md:py-2.5"
           >
@@ -212,14 +212,23 @@ export default function Hero() {
                 {/* glow ring */}
                 <div className="absolute -inset-6 rounded-[3rem] bg-gradient-to-tr from-neutral-900/5 via-transparent to-neutral-900/10 blur-2xl" />
 
-                <div className="group relative overflow-hidden rounded-3xl border border-neutral-900/10 bg-white shadow-2xl">
+                <div className="group relative h-[420px] w-[300px] overflow-hidden rounded-3xl border border-neutral-900/10 bg-neutral-100 shadow-2xl sm:h-[520px] sm:w-[380px]">
+                  {/* graceful fallback while the portrait loads / if it fails */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-neutral-200 via-neutral-100 to-neutral-300"
+                  >
+                    <span className="font-display text-5xl text-neutral-400">
+                      {profile.name.split(" ").map((w) => w[0]).join("")}
+                    </span>
+                  </div>
                   <Image
                     src={avatarArt}
                     alt="Portrait of Muhammad Hasaan"
                     width={420}
                     height={520}
                     priority
-                    className="h-[420px] w-[300px] object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-[520px] sm:w-[380px]"
+                    className="relative h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
                   {/* bottom info card inside photo */}

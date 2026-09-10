@@ -1,6 +1,7 @@
 import { Geist, Archivo_Black, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +57,8 @@ export default function RootLayout({ children }) {
           aria-hidden="true"
           className="pointer-events-none noise-overlay fixed inset-0 z-[100]"
         />
+        {/* Custom interactive cursor (fine-pointer devices only) */}
+        <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

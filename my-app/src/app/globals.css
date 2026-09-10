@@ -82,6 +82,26 @@ body {
   font-family: var(--font-grotesk), var(--font-geist-sans), sans-serif;
 }
 
+/* ---------- Custom cursor ---------- */
+/* Only hide the native cursor on devices with a precise pointer (desktop).
+   Touch devices keep the native cursor and never render the custom one. */
+@media (pointer: fine) {
+
+  html,
+  body,
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea,
+  select,
+  label,
+  summary,
+  .cursor-none {
+    cursor: none !important;
+  }
+}
+
 /* Text selection */
 ::selection {
   background: #111111;

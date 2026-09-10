@@ -181,7 +181,7 @@ export default function CTAFooter() {
                     key={s.label}
                     href={s.url}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1.5 rounded-full border border-white/15 px-3.5 py-1.5 font-grotesk text-xs text-white/70 transition-colors duration-300 hover:border-white/40 hover:text-white"
                   >
                     {s.label}

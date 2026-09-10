@@ -15,8 +15,16 @@ export const profile = {
   available: true,
   totalExperienceYears: "5+",
   socials: [
-    { label: "GitHub", handle: "@muhammadhasaan", url: "https://github.com" },
-    { label: "LinkedIn", handle: "in/muhammadhasaan", url: "https://linkedin.com" },
+    {
+      label: "GitHub",
+      handle: "@MuhammadHasaan546-eng",
+      url: "https://github.com/MuhammadHasaan546-eng",
+    },
+    {
+      label: "LinkedIn",
+      handle: "in/muhammad-hasaan-609a282a6",
+      url: "https://www.linkedin.com/in/muhammad-hasaan-609a282a6/",
+    },
     {
       label: "Email",
       handle: "muhammadhassanweb@gmail.com",
@@ -61,7 +69,11 @@ const makeArt = (colors, seed = 42) => {
     return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${c}" opacity="${(rand(60) + 30) / 100}"/>`;
   }).join("");
   const circle = `<circle cx="${30 + rand(40)}" cy="${30 + rand(40)}" r="${8 + rand(22)}" fill="${colors[1]}" opacity="0.9"/>`;
-  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 100 75'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='${colors[0]}'/%3E%3Cstop offset='1' stop-color='${colors[3]}'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='75' fill='url(%23g)'/%3E${circle}${rects}%3C/svg%3E`;
+  const svg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 100 75'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='${colors[0]}'/%3E%3Cstop offset='1' stop-color='${colors[3]}'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='75' fill='url(%23g)'/%3E${circle}${rects}%3C/svg%3E`;
+  // The SVG contains raw "#" (in hex colors) and spaces — both are invalid
+  // inside a data: URI and truncate the image. Encode them so every image
+  // (hero portrait, project previews, gallery) actually renders.
+  return svg.replace(/#/g, "%23").replace(/ /g, "%20");
 };
 
 export const avatarArt = makeArt(["#e6e1d6", "#111111", "#c9c2b4", "#8a8578"], 7);
@@ -79,8 +91,8 @@ export const projects = [
     year: "2025",
     duration: "10 Weeks",
     role: "Full-Stack Development, AI Integration",
-    stack: ["Next.js", "React", "Tailwind CSS", "AI API Integration"],
-    image: makeArt(paletteB, 11),
+    stack: ["Express.js", "React", "Tailwind CSS", "AI API Integration"],
+    image: "/projects/lume-ai.png",
     gradient: gradient(paletteB[0], paletteB[3]),
     color: "#0f172a",
     link: "https://lume-ai-xi.vercel.app/",
@@ -95,7 +107,7 @@ export const projects = [
       "3× faster iteration vs. manual scaffolding",
       "99.9% uptime across launch week",
     ],
-    gallery: [makeArt(paletteB, 21), makeArt(paletteB, 31), makeArt(paletteB, 41)],
+    gallery: ["/projects/lume-ai.png"],
   },
   {
     slug: "luro-ai",
@@ -107,7 +119,7 @@ export const projects = [
     duration: "8 Weeks",
     role: "Full-Stack Development, API Design",
     stack: ["Next.js", "AI APIs", "Node.js", "Express", "PDF Generation"],
-    image: makeArt(paletteE, 12),
+    image: "/projects/luro-ai.png",
     gradient: gradient(paletteE[0], paletteE[3]),
     color: "#c8a27a",
     link: "https://luro-ai-five.vercel.app/",
@@ -122,7 +134,7 @@ export const projects = [
       "PDF export generated in under 3 seconds",
       "78% reduction in manual copywriting time",
     ],
-    gallery: [makeArt(paletteE, 22), makeArt(paletteE, 32), makeArt(paletteE, 42)],
+    gallery: ["/projects/luro-ai.png"],
   },
   {
     slug: "kokhan-ecommerce",
@@ -134,7 +146,7 @@ export const projects = [
     duration: "12 Weeks",
     role: "Full-Stack Development, MERN Architecture",
     stack: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-    image: makeArt(paletteC, 13),
+    image: "/projects/kokhan-ecommerce.png",
     gradient: gradient(paletteC[0], paletteC[3]),
     color: "#d6c9a8",
     link: "https://kokhan.vercel.app/",
@@ -149,7 +161,7 @@ export const projects = [
       "32% uplift in completed checkouts",
       "100% responsive across mobile and desktop",
     ],
-    gallery: [makeArt(paletteC, 23), makeArt(paletteC, 33), makeArt(paletteC, 43)],
+    gallery: ["/projects/kokhan-ecommerce.png"],
   },
 ];
 
