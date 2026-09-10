@@ -11,6 +11,7 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import { experience, profile } from "@/data/portfolio";
 import { SectionHeading, EASE } from "./motion";
+import GridLines from "./GridLines";
 
 function ExperienceRow({ job, index }) {
   const ref = useRef(null);
@@ -149,6 +150,9 @@ export default function Experience() {
       id="experience"
       className="obsidian relative z-0 overflow-hidden bg-[#111111] text-white"
     >
+      {/* Luxury animated background grid (dark) */}
+      <GridLines variant="dark" />
+
       {/* soft top fade from light section */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32 bg-gradient-to-b from-[#f4f4f0] to-transparent opacity-90" />
 

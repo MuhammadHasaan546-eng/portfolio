@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Check, X, Mail } from "lucide-react";
 import { profile, navLinks } from "@/data/portfolio";
 import { EASE } from "./motion";
+import GridLines from "./GridLines";
 
 // Read the current year without a server/client hydration mismatch:
 // the server snapshot is deterministic, the client snapshot is live.
@@ -62,6 +63,9 @@ export default function CTAFooter() {
         id="contact"
         className="obsidian relative z-0 overflow-hidden bg-[#111111] px-6 pb-28 pt-24 text-white lg:px-10"
       >
+        {/* Luxury animated background grid (dark) */}
+        <GridLines variant="dark" />
+
         {/* oversized watermark — strictly background */}
         <p
           aria-hidden="true"

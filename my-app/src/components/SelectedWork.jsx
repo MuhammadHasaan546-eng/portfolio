@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { projects, projectCategories } from "@/data/portfolio";
 import { SectionHeading, EASE } from "./motion";
+import GridLines from "./GridLines";
 
 function ProjectCard({ project, index }) {
   return (
@@ -120,6 +121,7 @@ export default function SelectedWork() {
 
   return (
     <section id="work" className="relative z-0 bg-[#f4f4f0] px-6 py-24 lg:px-10 lg:py-32">
+      <GridLines variant="light" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
           index="01"
@@ -140,8 +142,8 @@ export default function SelectedWork() {
               key={c}
               onClick={() => setFilter(c)}
               className={`relative rounded-full px-5 py-2.5 font-grotesk text-sm tracking-wide transition-colors duration-300 ${filter === c
-                  ? "text-white"
-                  : "text-neutral-600 hover:text-neutral-900"
+                ? "text-white"
+                : "text-neutral-600 hover:text-neutral-900"
                 }`}
             >
               {filter === c && (

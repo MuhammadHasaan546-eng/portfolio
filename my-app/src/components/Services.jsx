@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { services } from "@/data/portfolio";
 import { SectionHeading, EASE } from "./motion";
+import GridLines from "./GridLines";
 
 function ServiceRow({ service, index, active, onToggle }) {
   const open = active === service.id;
@@ -45,8 +46,8 @@ function ServiceRow({ service, index, active, onToggle }) {
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.4, ease: EASE }}
             className={`flex h-14 w-14 items-center justify-center rounded-full border transition-colors duration-500 ${open
-                ? "border-white/25 bg-white text-neutral-900"
-                : "border-neutral-900/15 text-neutral-900"
+              ? "border-white/25 bg-white text-neutral-900"
+              : "border-neutral-900/15 text-neutral-900"
               }`}
           >
             <Plus size={20} strokeWidth={2} />
@@ -112,6 +113,7 @@ export default function Services() {
       id="services"
       className="relative z-0 bg-[#f4f4f0] px-6 py-24 lg:px-10 lg:py-32"
     >
+      <GridLines variant="light" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
           index="02"

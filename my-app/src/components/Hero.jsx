@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { profile, avatarArt } from "@/data/portfolio";
 import { EASE, stagger, fadeUp } from "./motion";
+import GridLines from "./GridLines";
 
 const socialIcons = {
   GitHub: (
@@ -66,6 +67,9 @@ export default function Hero() {
       className="relative flex min-h-screen flex-col overflow-hidden bg-[#f4f4f0]"
     >
       {/* ================= LAYER 0 — background only (z-0, no pointer) ================= */}
+      {/* Luxury animated background grid */}
+      <GridLines variant="light" />
+
       {/* Giant watermark text — strictly behind all content */}
       <motion.h1
         aria-hidden="true"
