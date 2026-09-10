@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ---------------------------------- */
+/* Design tokens                       */
+/* ---------------------------------- */
+:root {
+  --background: #f4f3ef; /* warm off-white / light gray */
+  --foreground: #111111; /* deep obsidian ink */
+  --surface: #ffffff;
+  --muted: #6f6e69;
+  --line: rgba(17, 17, 17, 0.12);
+  --line-dark: rgba(255, 255, 255, 0.14);
+  --obsidian: #111111; /* deep obsidian black/charcoal */
+  --obsidian-soft: #1a1a1a;
+  --accent: #e6e1d6; /* champagne accent for the dark theme */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-ink: var(--foreground);
+  --color-obsidian: var(--obsidian);
+  --color-obsidian-soft: var(--obsidian-soft);
+  --color-champagne: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-archivo);
+  --font-grotesk: var(--font-grotesk);
+}
+
+/* ---------------------------------- */
+/* Base                                */
+/* ---------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Geometric extra-bold display face for giant headers */
+.font-display {
+  font-family: var(--font-archivo), var(--font-geist-sans), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Clean groove for labels & accents */
+.font-grotesk {
+  font-family: var(--font-grotesk), var(--font-geist-sans), sans-serif;
+}
+
+/* Text selection */
+::selection {
+  background: #111111;
+  color: #f4f3ef;
+}
+
+.obsidian ::selection {
+  background: #f4f3ef;
+  color: #111111;
+}
+
+/* ---------------------------------- */
+/* Noise overlay texture               */
+/* ---------------------------------- */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-size: 180px 180px;
+}
+
+.obsidian .noise-overlay,
+.obsidian.noise-overlay {
+  mix-blend-mode: screen;
+}
+
+/* ---------------------------------- */
+/* Reusable luxury utilities           */
+/* ---------------------------------- */
+
+/* Faint oversized outline watermark */
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(17, 17, 17, 0.16);
+  color: transparent;
+}
+
+.obsidian .text-outline {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.14);
+}
+
+.text-outline-strong {
+  -webkit-text-stroke: 2px rgba(17, 17, 17, 0.28);
+  color: transparent;
+}
+
+.obsidian .text-outline-strong {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.22);
+}
+
+/* hide scrollbar for filter bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* dotted row separators */
+.dot-line {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
