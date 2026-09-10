@@ -1,21 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check, X, Mail } from "lucide-react";
 import { profile, navLinks } from "@/data/portfolio";
 import { EASE } from "./motion";
 
+// Read the current year without a server/client hydration mismatch:
+// the server snapshot is deterministic, the client snapshot is live.
+const subscribeYear = () => () => { };
+const getYearSnapshot = () => new Date().getFullYear();
+const getServerYearSnapshot = () => 2025;
+
 export default function CTAFooter() {
   const [copied, setCopied] = useState(false);
-  // Render a deterministic year on the server, then sync to the real year on
-  // the client after hydration to avoid a server/client mismatch.
-  const [year, setYear] = useState(2025);
+  const [modalOpen, setModalOpen] = useState(false);
+  const year = useSyncExternalStore(
+    subscribeYear,
+    getYearSnapshot,
+    getServerYearSnapshot
+  );
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  // Lock body scroll + close on Escape while the modal is open
   useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+    if (!modalOpen) return;
+    const onKey = (e) => e.key === "Escape" && setModalOpen(false);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [modalOpen]);
 
   const copyEmail = async () => {
     try {
@@ -27,22 +45,32 @@ export default function CTAFooter() {
     }
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New project enquiry from ${form.name || "your site"}`);
+    const body = encodeURIComponent(
+      `${form.message}\n\n— ${form.name}\n${form.email}`
+    );
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setModalOpen(false);
+  };
+
   return (
     <>
       {/* ---------------- CTA ---------------- */}
       <section
         id="contact"
-        className="obsidian relative overflow-hidden bg-obsidian px-6 pb-28 pt-24 text-white lg:px-10"
+        className="obsidian relative z-0 overflow-hidden bg-[#111111] px-6 pb-28 pt-24 text-white lg:px-10"
       >
-        {/* oversized watermark */}
+        {/* oversized watermark — strictly background */}
         <p
           aria-hidden="true"
-          className="text-outline pointer-events-none absolute inset-x-0 top-8 select-none text-center font-display text-[17vw] leading-none"
+          className="text-outline pointer-events-none absolute inset-x-0 top-8 z-0 select-none text-center font-display text-[17vw] leading-none"
         >
           {"LET'S TALK"}
         </p>
 
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center text-center">
+        <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +88,7 @@ export default function CTAFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
-            className="font-display mt-8 text-5xl leading-[0.92] tracking-tight sm:text-7xl lg:text-8xl"
+            className="font-display mt-8 text-5xl leading-[0.92] tracking-tight text-white sm:text-7xl lg:text-8xl"
           >
             HAVE A PROJECT
             <br />
@@ -103,17 +131,17 @@ export default function CTAFooter() {
                 </motion.button>
               ) : (
                 <motion.button
-                  key="copy"
+                  key="contact"
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
                   transition={{ duration: 0.3, ease: EASE }}
-                  onClick={copyEmail}
-                  className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-white px-9 py-5 text-base font-semibold text-ink"
+                  onClick={() => setModalOpen(true)}
+                  className="group relative flex items-center gap-4 overflow-hidden rounded-full bg-white px-9 py-5 text-base font-semibold text-neutral-900"
                 >
                   <span className="absolute inset-0 -translate-x-full bg-champagne transition-transform duration-500 ease-out group-hover:translate-x-0" />
                   <span className="relative">Contact Me</span>
-                  <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white transition-transform duration-500 group-hover:rotate-45">
+                  <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white transition-transform duration-500 group-hover:rotate-45">
                     <ArrowUpRight size={16} />
                   </span>
                 </motion.button>
@@ -127,13 +155,13 @@ export default function CTAFooter() {
       </section>
 
       {/* ---------------- Footer ---------------- */}
-      <footer className="obsidian border-t border-white/10 bg-obsidian px-6 pb-10 pt-14 text-white lg:px-10">
-        <div className="mx-auto max-w-7xl">
+      <footer className="obsidian relative z-0 border-t border-white/10 bg-[#111111] px-6 pb-10 pt-14 text-white lg:px-10">
+        <div className="relative z-10 mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
             {/* brand */}
             <div>
               <Link href="#top" className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-900">
                   <ArrowUpRight size={17} />
                 </span>
                 <span className="font-display text-lg tracking-tight">
@@ -213,6 +241,113 @@ export default function CTAFooter() {
           </div>
         </div>
       </footer>
+
+      {/* ---------------- Contact Modal (z-50) ---------------- */}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: EASE }}
+          >
+            {/* backdrop */}
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setModalOpen(false)}
+              aria-hidden="true"
+            />
+
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Contact Muhammad Hasaan"
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.96 }}
+              transition={{ duration: 0.35, ease: EASE }}
+              className="relative z-10 w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-[#111111] p-8 text-white shadow-2xl"
+            >
+              <button
+                onClick={() => setModalOpen(false)}
+                aria-label="Close contact dialog"
+                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/40 hover:text-white"
+              >
+                <X size={16} />
+              </button>
+
+              <p className="font-grotesk text-xs uppercase tracking-[0.25em] text-champagne/80">
+                Start a project
+              </p>
+              <h3 className="font-display mt-3 text-3xl tracking-tight">
+                {"Let's build something great"}
+              </h3>
+
+              <form onSubmit={submit} className="mt-7 flex flex-col gap-4">
+                <div>
+                  <label className="font-grotesk text-xs uppercase tracking-[0.18em] text-white/50">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-champagne/60"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="font-grotesk text-xs uppercase tracking-[0.18em] text-white/50">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-champagne/60"
+                    placeholder="you@company.com"
+                  />
+                </div>
+                <div>
+                  <label className="font-grotesk text-xs uppercase tracking-[0.18em] text-white/50">
+                    Project details
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="mt-2 w-full resize-none rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-champagne/60"
+                    placeholder="Tell me about the product you want to build..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="group mt-2 flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-semibold text-neutral-900 transition-colors duration-300 hover:bg-champagne"
+                >
+                  <Mail size={16} />
+                  Send Message
+                  <ArrowUpRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </button>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="font-grotesk text-center text-xs tracking-wide text-white/40 transition-colors hover:text-white/70"
+                >
+                  or copy email — {profile.email}
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

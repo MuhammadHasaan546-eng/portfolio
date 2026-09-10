@@ -26,11 +26,10 @@ export default function Header() {
         className="fixed inset-x-0 top-4 z-50 flex justify-center px-4"
       >
         <div
-          className={`flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2.5 transition-all duration-500 sm:px-4 ${
-            scrolled
+          className={`flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2.5 transition-all duration-500 sm:px-4 ${scrolled
               ? "border-ink/10 bg-white/80 shadow-[0_20px_60px_-20px_rgba(17,17,17,0.25)] backdrop-blur-xl"
               : "border-ink/10 bg-white/70 backdrop-blur-md"
-          }`}
+            }`}
         >
           {/* Logo */}
           <a
@@ -67,7 +66,7 @@ export default function Header() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              Available for New Project
+              Available for New Projects
             </span>
             <a
               href="#contact"

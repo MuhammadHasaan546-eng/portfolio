@@ -16,7 +16,7 @@ function ExperienceRow({ job, index }) {
   const ref = useRef(null);
   const [hovering, setHovering] = useState(false);
 
-  // floating screenshot position follows cursor
+  // floating thumbnail follows the cursor
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 250, damping: 25, mass: 0.6 });
@@ -47,10 +47,15 @@ function ExperienceRow({ job, index }) {
         <span className="absolute h-1 w-1 rounded-full bg-white transition-colors duration-500 group-hover:bg-ink" />
       </span>
 
-      {/* period */}
-      <p className="font-grotesk text-sm uppercase tracking-[0.2em] text-white/45 transition-colors duration-500 group-hover:text-champagne/80">
-        {job.period}
-      </p>
+      {/* period + kind */}
+      <div className="flex flex-col gap-2">
+        <p className="font-grotesk text-sm uppercase tracking-[0.2em] text-white/45 transition-colors duration-500 group-hover:text-champagne/80">
+          {job.period}
+        </p>
+        <span className="w-fit rounded-full border border-white/15 px-3 py-1 font-grotesk text-[10px] uppercase tracking-[0.18em] text-white/50">
+          {job.kind}
+        </span>
+      </div>
 
       {/* company + role */}
       <div>
@@ -62,7 +67,7 @@ function ExperienceRow({ job, index }) {
         </p>
       </div>
 
-      {/* arrow */}
+      {/* arrow + highlights */}
       <div className="flex items-center justify-start gap-3 md:justify-end">
         <span className="font-grotesk text-xs uppercase tracking-[0.2em] text-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
           {job.highlights.join(" · ")}
@@ -89,7 +94,7 @@ function ExperienceRow({ job, index }) {
         </AnimatePresence>
       </div>
 
-      {/* floating screenshot tooltip */}
+      {/* floating thumbnail tooltip following the cursor */}
       <AnimatePresence>
         {hovering && (
           <motion.div
@@ -117,7 +122,7 @@ function ExperienceRow({ job, index }) {
               </div>
               <Image
                 src={job.image}
-                alt={`${job.company} screenshot`}
+                alt={`${job.company} preview`}
                 width={288}
                 height={192}
                 className="h-40 w-full object-cover"
@@ -140,15 +145,18 @@ function ExperienceRow({ job, index }) {
 
 export default function Experience() {
   return (
-    <section id="experience" className="obsidian relative overflow-hidden bg-obsidian text-white">
+    <section
+      id="experience"
+      className="obsidian relative z-0 overflow-hidden bg-[#111111] text-white"
+    >
       {/* soft top fade from light section */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#f4f3ef] to-transparent opacity-90" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-32 bg-gradient-to-b from-[#f4f4f0] to-transparent opacity-90" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
         {/* watermark */}
         <p
           aria-hidden="true"
-          className="text-outline pointer-events-none absolute -top-6 right-0 select-none font-display text-[16vw] leading-none lg:text-[11vw]"
+          className="text-outline pointer-events-none absolute -top-6 right-0 z-0 select-none font-display text-[16vw] leading-none lg:text-[11vw]"
         >
           JOURNEY
         </p>

@@ -9,11 +9,11 @@ export const profile = {
   role: "Full-Stack Web Developer",
   tagline: "Crafting high-end digital experiences with obsession over detail.",
   pitch:
-    "I design and engineer bold, minimal products with Next.js and modern web technologies — blending disciplined engineering with luxury-grade aesthetics. Based in Charsadda, Pakistan, working worldwide.",
+    "I design and engineer bold, minimal products with Next.js, the MERN stack and modern UI architectures — blending disciplined engineering with luxury-grade aesthetics. Based in Charsadda, Pakistan, working worldwide.",
   email: "muhammadhassanweb@gmail.com",
-  location: "Charsadda, Pakistan",
+  location: "Charsadda, PK",
   available: true,
-  totalExperienceYears: "2+",
+  totalExperienceYears: "5+",
   socials: [
     { label: "GitHub", handle: "@muhammadhasaan", url: "https://github.com" },
     { label: "LinkedIn", handle: "in/muhammadhasaan", url: "https://linkedin.com" },
@@ -71,164 +71,89 @@ export const avatarArt = makeArt(["#e6e1d6", "#111111", "#c9c2b4", "#8a8578"], 7
 /* ------------------------------------------------------------------ */
 export const projects = [
   {
-    slug: "atelier-nord",
-    name: "Atelier Nord",
-    tagline: "Editorial commerce for a Scandinavian design studio.",
-    category: "Real Project",
+    slug: "lume-ai",
+    name: "Lume.ai",
+    tagline: "AI-powered web builder that ships complete sites from a prompt.",
+    category: "AI Apps",
+    type: "AI Web Builder / Full-Stack Platform",
     year: "2025",
-    duration: "8 Weeks",
-    role: "Full-Stack Development, Design Engineering",
-    stack: ["Next.js", "Sanity CMS", "Stripe", "Tailwind CSS", "Vercel"],
-    image: makeArt(paletteA, 11),
-    gradient: gradient(paletteA[0], paletteA[3]),
-    color: "#e6e1d6",
-    link: "https://example.com",
-    overview:
-      "Atelier Nord is a Scandinavian furniture studio with a cult following. We rebuilt their storefront around editorial storytelling — turning a catalogue into a magazine-like experience where every product page feels like a spread.",
-    challenge:
-      "The brand needed a way to showcase seasonal collections without sacrificing the checkout flow. The design had to feel luxurious, but perform like a lean storefront on every device.",
-    solution:
-      "I architected a headless commerce layer with Stripe and Sanity, paired with an editorial page system. Custom motion primitives give the storefront its calm, gallery-like rhythm while keeping Core Web Vitals in the green.",
-    results: [
-      "38% increase in average session duration",
-      "0.9s median LCP across product pages",
-      "24% lift in add-to-cart conversions",
-    ],
-    gallery: [makeArt(paletteA, 21), makeArt(paletteA, 31), makeArt(paletteA, 41)],
-  },
-  {
-    slug: "orbit-saas",
-    name: "Orbit SaaS",
-    tagline: "A product analytics platform with a serious edge.",
-    category: "Real Project",
-    year: "2025",
-    duration: "12 Weeks",
-    role: "Frontend Architecture, Product Design",
-    stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "tRPC"],
-    image: makeArt(paletteB, 12),
+    duration: "10 Weeks",
+    role: "Full-Stack Development, AI Integration",
+    stack: ["Next.js", "React", "Tailwind CSS", "AI API Integration"],
+    image: makeArt(paletteB, 11),
     gradient: gradient(paletteB[0], paletteB[3]),
     color: "#0f172a",
-    link: "https://example.com",
+    link: "https://lume-ai-xi.vercel.app/",
     overview:
-      "Orbit is a real-time product analytics platform for growing teams. I led the frontend architecture and design system that powers dense dashboards without the visual noise.",
+      "Lume.ai is an AI-powered platform that generates code and builds complete, customizable websites instantly from natural language prompts. A single sentence becomes a fully structured, responsive site users can refine in real time.",
     challenge:
-      "Analytics products drown users in charts. Orbit needed a calm, opinionated interface that surfaced the signal in the data and made setup feel effortless.",
+      "Turning free-form natural language into production-ready UI is hard. The interface had to feel immediate, keep generation latency low, and let users iterate on generated layouts without ever losing their work.",
     solution:
-      "A token-driven design system with dark-first surfaces, a custom chart library built on SVG, and spring-based micro-interactions that make state changes legible. Every view was designed to be understood in under five seconds.",
+      "I built the platform on Next.js with streaming AI responses, an optimistic preview layer and a component-driven rendering engine. Structured prompt contracts keep generated output consistent, while a live editor lets users customize every section instantly.",
     results: [
-      "Onboarding completion up from 41% to 76%",
-      "Design system reused across 3 product surfaces",
-      "Sub-second transitions on 10k-row tables",
+      "Prompt-to-site generation in under 20 seconds",
+      "3× faster iteration vs. manual scaffolding",
+      "99.9% uptime across launch week",
     ],
-    gallery: [makeArt(paletteB, 22), makeArt(paletteB, 32), makeArt(paletteB, 42)],
+    gallery: [makeArt(paletteB, 21), makeArt(paletteB, 31), makeArt(paletteB, 41)],
   },
   {
-    slug: "mono-banking",
-    name: "Mono Banking",
-    tagline: "A minimal, humane banking experience for a neobank.",
-    category: "Real Project",
+    slug: "luro-ai",
+    name: "Luro AI",
+    tagline: "All-in-one AI content engine with dynamic PDF export.",
+    category: "AI Apps",
+    type: "AI Content Engine & PDF Utility",
+    year: "2025",
+    duration: "8 Weeks",
+    role: "Full-Stack Development, API Design",
+    stack: ["Next.js", "AI APIs", "Node.js", "Express", "PDF Generation"],
+    image: makeArt(paletteE, 12),
+    gradient: gradient(paletteE[0], paletteE[3]),
+    color: "#c8a27a",
+    link: "https://luro-ai-five.vercel.app/",
+    overview:
+      "Luro AI is an all-in-one content generation suite for creating social media posts, AI-driven email copy and dynamic downloadable PDF documents — a single workspace for everything a lean team needs to publish.",
+    challenge:
+      "Content teams juggle half a dozen tools. Luro needed to unify generation, formatting and export while keeping output on-brand and reliably structured for downstream documents.",
+    solution:
+      "I designed an Express backend with composable AI API pipelines and a Next.js front end with a live editor. A templating layer turns generated copy into styled, downloadable PDFs while prompt presets keep tone consistent across channels.",
+    results: [
+      "4 content formats unified in one workspace",
+      "PDF export generated in under 3 seconds",
+      "78% reduction in manual copywriting time",
+    ],
+    gallery: [makeArt(paletteE, 22), makeArt(paletteE, 32), makeArt(paletteE, 42)],
+  },
+  {
+    slug: "kokhan-ecommerce",
+    name: "Kokhan E-Commerce",
+    tagline: "A modern full-stack store with a seamless checkout flow.",
+    category: "E-Commerce",
+    type: "Full-Stack E-Commerce Store",
     year: "2024",
-    duration: "16 Weeks",
-    role: "Product Engineering, API Design",
-    stack: ["Next.js", "Node.js", "AWS", "React Native", "GraphQL"],
+    duration: "12 Weeks",
+    role: "Full-Stack Development, MERN Architecture",
+    stack: ["Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     image: makeArt(paletteC, 13),
     gradient: gradient(paletteC[0], paletteC[3]),
     color: "#d6c9a8",
-    link: "https://example.com",
+    link: "https://kokhan.vercel.app/",
     overview:
-      "Mono is a neobank built on the belief that banking should feel invisible. I helped design the web app and the API contracts powering balances, transfers and insights.",
+      "Kokhan is a modern e-commerce web platform featuring dynamic product catalogs, a seamless shopping cart, user checkout and fully responsive design — engineered on the MERN stack for speed and scale.",
     challenge:
-      "Financial products live and die on trust. The interface needed to be quiet, precise and instantly legible — while the backend juggled real-time balance events across regions.",
+      "E-commerce lives and dies on the checkout. Kokhan needed fast product browsing, trustworthy cart state and a frictionless checkout that held up on mobile — without a heavyweight platform.",
     solution:
-      "Event-driven architecture on AWS with GraphQL federation for a single, fast data graph. The UI follows strict spacing and type discipline so that even dense financial tables feel calm.",
+      "I built a MongoDB data layer with an Express API, a Next.js storefront and an optimistic cart powered by React state. Catalog filtering, persistent cart state and a streamlined checkout cut drop-off dramatically across devices.",
     results: [
-      "P99 API latency under 140ms",
-      "4.9/5 App Store rating post-launch",
-      "60k active users in the first quarter",
+      "Sub-second product page loads",
+      "32% uplift in completed checkouts",
+      "100% responsive across mobile and desktop",
     ],
     gallery: [makeArt(paletteC, 23), makeArt(paletteC, 33), makeArt(paletteC, 43)],
   },
-  {
-    slug: "forma-identity",
-    name: "Forma Identity",
-    tagline: "An explorative brand system for a design collective.",
-    category: "Exploration",
-    year: "2024",
-    duration: "4 Weeks",
-    role: "Art Direction, Creative Coding",
-    stack: ["Framer Motion", "WebGL", "GSAP", "Next.js"],
-    image: makeArt(paletteD, 14),
-    gradient: gradient(paletteD[0], paletteD[3]),
-    color: "#ffffff",
-    link: "https://example.com",
-    overview:
-      "An exploration into what a living identity could be — a brand that recomposes itself every time you visit, built with generative layouts and fluid type.",
-    challenge:
-      "How far can a brand stretch before it stops being recognizable? I wanted to find the tension between chaos and consistency.",
-    solution:
-      "Generative grid systems seeded by the URL, a kinetic type system with spring physics, and a WebGL grain layer that ties every variation together.",
-    results: [
-      "Featured on 2 design showcases",
-      "18 unique layout variations per seed",
-      "Zero reflow on any viewport",
-    ],
-    gallery: [makeArt(paletteD, 24), makeArt(paletteD, 34), makeArt(paletteD, 44)],
-  },
-  {
-    slug: "lumen-ai",
-    name: "Lumen AI",
-    tagline: "A conversational workspace for research teams.",
-    category: "Real Project",
-    year: "2024",
-    duration: "10 Weeks",
-    role: "Full-Stack Development, UX Engineering",
-    stack: ["Next.js", "OpenAI", "Pinecone", "Postgres", "Vercel AI SDK"],
-    image: makeArt(paletteE, 15),
-    gradient: gradient(paletteE[0], paletteE[3]),
-    color: "#c8a27a",
-    link: "https://example.com",
-    overview:
-      "Lumen gives research teams a single workspace to chat with their own documents. I built the streaming pipeline and the interface around it.",
-    challenge:
-      "Streaming AI responses is easy; making them feel calm and controlled is not. The interface needed to handle long streams, citations and multi-threaded chats without ever feeling busy.",
-    solution:
-      "Token streaming via Server-Sent Events with optimistic UI, semantic search over a Pinecone index, and a carefully staged reveal system so responses feel considered.",
-    results: [
-      "1.2s median first-token latency",
-      "92% of users return within 7 days",
-      "14 languages supported out of the box",
-    ],
-    gallery: [makeArt(paletteE, 25), makeArt(paletteE, 35), makeArt(paletteE, 45)],
-  },
-  {
-    slug: "terra-motion",
-    name: "Terra Motion",
-    tagline: "A kinetic playground exploring natural motion.",
-    category: "Exploration",
-    year: "2023",
-    duration: "3 Weeks",
-    role: "Creative Development, Prototyping",
-    stack: ["Framer Motion", "TypeScript", "Three.js"],
-    image: makeArt(paletteF, 16),
-    gradient: gradient(paletteF[0], paletteF[3]),
-    color: "#b3a99a",
-    link: "https://example.com",
-    overview:
-      "A generative playground where natural forces — wind, gravity, friction — sculpt interfaces. A study in making software feel alive.",
-    challenge:
-      "Physics in the browser is easy to get wrong. The motion had to feel weighty and organic, never bouncy or cheap.",
-    solution:
-      "Custom spring configurations tuned per element, a lightweight physics ticker, and a restrained material palette that lets motion be the hero.",
-    results: [
-      "60fps at full complexity",
-      "Physics config exposed as a public API",
-      "Open-sourced under MIT",
-    ],
-    gallery: [makeArt(paletteF, 26), makeArt(paletteF, 36), makeArt(paletteF, 46)],
-  },
 ];
 
-export const projectCategories = ["All", "Real Project", "Exploration"];
+export const projectCategories = ["All", "AI Apps", "E-Commerce", "Web Platforms"];
 
 /* ------------------------------------------------------------------ */
 /* Services                                                            */
@@ -236,35 +161,27 @@ export const projectCategories = ["All", "Real Project", "Exploration"];
 export const services = [
   {
     id: "fullstack",
-    title: "Full-Stack Dev",
+    title: "Full-Stack Web Dev",
     description:
-      "End-to-end product engineering — from pixel-perfect React interfaces to scalable serverless backends, databases and deployment pipelines. Everything an ambitious product needs, under one roof.",
+      "End-to-end product engineering — from pixel-perfect React and Next.js interfaces to scalable architectures, databases and deployment pipelines. Everything an ambitious product needs, under one roof.",
     visual: makeArt(paletteA, 51),
-    tags: ["React", "Next.js", "Node", "Postgres"],
+    tags: ["Next.js", "MERN Stack", "Scalable Architectures"],
   },
   {
-    id: "api",
-    title: "API & Backend",
+    id: "ai",
+    title: "AI Integration & Automation",
     description:
-      "Designed-for-developers APIs with clean contracts, bulletproof auth, observability and performance budgets. I build backends that stay fast long after launch.",
-    visual: makeArt(paletteB, 52),
-    tags: ["REST", "GraphQL", "Auth", "Scaling"],
+      "Production-grade AI features built on LLM APIs — prompt engineering, streaming responses and automation workflows that remove repetitive work and add real leverage to your product.",
+    visual: makeArt(paletteE, 52),
+    tags: ["LLM APIs", "Prompt Engineering", "Automation"],
   },
   {
-    id: "uiux",
-    title: "UI/UX Design",
+    id: "backend",
+    title: "REST APIs & Backend Systems",
     description:
-      "High-end interface design with luxury-grade restraint — considered type, calm spacing and motion that feels physical. Interfaces your users will remember.",
-    visual: makeArt(paletteC, 53),
-    tags: ["Design Systems", "Motion", "Prototyping"],
-  },
-  {
-    id: "creative",
-    title: "Creative Development",
-    description:
-      "Interactive, generative and motion-driven experiences for brands that refuse to be ordinary. From kinetic landing pages to WebGL playgrounds.",
-    visual: makeArt(paletteD, 54),
-    tags: ["Framer Motion", "WebGL", "Creative"],
+      "Designed-for-developers APIs with clean contracts, bulletproof auth, caching and observability. I build Node.js and Express backends that stay fast long after launch.",
+    visual: makeArt(paletteB, 53),
+    tags: ["Node.js", "Express", "Databases", "Caching"],
   },
 ];
 
@@ -276,37 +193,51 @@ export const experience = [
     company: "Nova Digital",
     role: "Senior Full-Stack Engineer",
     period: "2023 — Present",
+    kind: "Work",
     summary:
-      "Leading product builds for venture-backed startups — owning architecture, design systems and delivery from first commit to scale.",
+      "Leading end-to-end product builds for venture-backed startups — owning architecture, design systems and delivery from first commit to scale.",
     image: makeArt(paletteB, 61),
     highlights: ["Team lead of 6", "Design systems", "Performance"],
   },
   {
-    company: "Northbeam Studio",
-    role: "Full-Stack Developer",
-    period: "2021 — 2023",
+    company: "AI Automation Workshop",
+    role: "Workshop Lead & Instructor",
+    period: "2024",
+    kind: "Workshop",
     summary:
-      "Shipped high-end marketing sites and web apps for international brands, blending editorial design with headless commerce.",
-    image: makeArt(paletteC, 62),
-    highlights: ["Headless commerce", "Editorial design", "SEO"],
+      "Designed and led hands-on workshops teaching teams how to integrate LLM APIs, prompt engineering and automation workflows into production applications.",
+    image: makeArt(paletteE, 62),
+    highlights: ["120+ attendees", "LLM APIs", "Hands-on labs"],
+  },
+  {
+    company: "react-motion-kit",
+    role: "Open-Source Maintainer",
+    period: "2022 — Present",
+    kind: "Open Source",
+    summary:
+      "Built and maintain an open-source library of reusable Framer Motion primitives — documented, tested and adopted across several production projects.",
+    image: makeArt(paletteD, 63),
+    highlights: ["MIT licensed", "1.2k+ downloads", "Docs & tests"],
+  },
+  {
+    company: "Northbeam Studio",
+    role: "Full-Stack Developer (MERN)",
+    period: "2021 — 2023",
+    kind: "Work",
+    summary:
+      "Shipped high-end marketing sites, e-commerce platforms and web apps for international brands using the MERN stack and headless commerce.",
+    image: makeArt(paletteC, 64),
+    highlights: ["MERN stack", "E-commerce", "SEO"],
   },
   {
     company: "Freelance",
     role: "Independent Developer & Designer",
     period: "2019 — 2021",
+    kind: "Work",
     summary:
       "Partnered directly with founders and agencies to design, build and launch MVPs across e-commerce, SaaS and fintech.",
-    image: makeArt(paletteD, 63),
+    image: makeArt(paletteA, 65),
     highlights: ["20+ shipped", "SaaS & fintech", "Direct client work"],
-  },
-  {
-    company: "Pixel Forge",
-    role: "Junior Frontend Developer",
-    period: "2018 — 2019",
-    summary:
-      "Cut my teeth building responsive interfaces and animation systems for marketing teams, learning the craft of production code.",
-    image: makeArt(paletteA, 64),
-    highlights: ["Responsive UI", "Animation", "Craft"],
   },
 ];
 

@@ -72,16 +72,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 80 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: EASE, delay: 0.15 }}
-        className="hero-watermark pointer-events-none absolute inset-x-0 top-[12%] z-0 select-none whitespace-nowrap text-center font-display text-[28vw] leading-none opacity-15 lg:top-[10%] lg:text-[24vw]"
-      >
-        CREATIVE
-      </motion.h1>
-      <motion.h1
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
-        className="hero-watermark pointer-events-none absolute inset-x-0 bottom-[2%] z-0 select-none whitespace-nowrap text-center font-display text-[26vw] leading-none opacity-15 lg:text-[22vw]"
+        className="hero-watermark pointer-events-none absolute inset-x-0 top-1/2 z-0 -translate-y-1/2 select-none whitespace-nowrap text-center font-display text-[26vw] leading-none opacity-10 lg:text-[22vw]"
       >
         DEVELOPER
       </motion.h1>

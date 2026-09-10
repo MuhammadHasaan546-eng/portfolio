@@ -96,7 +96,7 @@ export default function CaseStudyContent({ project }) {
         {/* meta grid */}
         <div className="grid grid-cols-2 gap-6 border-b border-white/10 pb-12 md:grid-cols-4">
           {[
-            { label: "Client", value: project.name },
+            { label: "Project", value: project.type },
             { label: "Year", value: project.year },
             { label: "Duration", value: project.duration },
             { label: "Role", value: project.role },
@@ -168,9 +168,8 @@ export default function CaseStudyContent({ project }) {
             {project.gallery.map((img, i) => (
               <div
                 key={i}
-                className={`overflow-hidden rounded-3xl border border-white/10 ${
-                  i === 0 ? "md:col-span-2" : ""
-                }`}
+                className={`overflow-hidden rounded-3xl border border-white/10 ${i === 0 ? "md:col-span-2" : ""
+                  }`}
               >
                 <Image
                   src={img}
