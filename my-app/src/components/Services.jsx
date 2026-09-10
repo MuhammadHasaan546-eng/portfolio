@@ -4,9 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
-import { services } from "@/data/portfolio";
+import { services, previews } from "@/data/portfolio";
 import { SectionHeading, EASE } from "./motion";
 import GridLines from "./GridLines";
+import HoverPreviewText from "./HoverPreviewText";
 
 function ServiceRow({ service, index, active, onToggle }) {
   const open = active === service.id;
@@ -35,9 +36,13 @@ function ServiceRow({ service, index, active, onToggle }) {
           className="flex items-center gap-4 text-left"
           aria-expanded={open}
         >
-          <h3 className="font-display text-3xl uppercase leading-none tracking-tight sm:text-5xl lg:text-6xl">
+          <HoverPreviewText
+            as="h3"
+            images={previews.serviceById[service.id]}
+            className="font-display cursor-default text-3xl uppercase leading-none tracking-tight sm:text-5xl lg:text-6xl"
+          >
             {service.title}
-          </h3>
+          </HoverPreviewText>
         </button>
 
         {/* plus toggle */}
@@ -122,7 +127,12 @@ export default function Services() {
             <>
               What I can do
               <br />
-              <span className="text-neutral-900/35">for your product</span>
+              <HoverPreviewText
+                images={previews.services}
+                className="text-neutral-900/35"
+              >
+                for your product
+              </HoverPreviewText>
             </>
           }
         />

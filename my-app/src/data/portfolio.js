@@ -83,6 +83,43 @@ const makeArt = (colors, seed = 42) => {
 
 export const avatarArt = makeArt(["#e6e1d6", "#111111", "#c9c2b4", "#8a8578"], 7);
 
+/* ------------------------------------------------------------------ */
+/* Hover-preview artwork — real images served from /public/previews    */
+/* Consumed by <HoverPreviewText /> for cursor-following previews.     */
+/* ------------------------------------------------------------------ */
+const pv = (file, label) => ({ src: `/previews/${file}`, label });
+
+export const previews = {
+  // "Years of crafting the web" — Experience section header
+  hero: [
+    pv("web-development.jpeg", "Modern Web Development"),
+    pv("rest-api.jpg", "REST API Architecture"),
+    pv("cloud-security.jpeg", "Transport & Auth Security"),
+    pv("north-studio.png", "North Studio"),
+  ],
+  // "What I can do for your product" — Services section header
+  services: [
+    pv("web-development.jpeg", "Full-Stack Web Dev"),
+    pv("ai-integration.jpeg", "AI Integration"),
+    pv("rest-api.jpg", "REST APIs & Backend"),
+    pv("creator-studio.jpeg", "Creator Studio"),
+  ],
+  // Per-service floating cards (keyed by service id)
+  serviceById: {
+    fullstack: [pv("web-development.jpeg", "Full-Stack Web Dev"), pv("north-studio.png", "North Studio")],
+    ai: [pv("ai-integration.jpeg", "AI Integration"), pv("creator-studio.jpeg", "Creator Studio")],
+    backend: [pv("rest-api.jpg", "REST API Architecture"), pv("cloud-security.jpeg", "Secure Backends")],
+  },
+  // Per-experience previews (keyed by company name)
+  byCompany: {
+    "Nova Digital": [pv("web-development.jpeg", "Product Engineering"), pv("north-studio.png", "North Studio")],
+    "AI Automation Workshop": [pv("ai-integration.jpeg", "LLM Automation")],
+    "react-motion-kit": [pv("creator-studio.jpeg", "Motion Kit")],
+    "Northbeam Studio": [pv("cloud-security.jpeg", "Secure Platforms")],
+    Freelance: [pv("freelance.png", "Freelance Work")],
+  },
+};
+
 // Remote stock imagery from Unsplash — real photography used to flesh out the
 // project galleries alongside the hand-captured product screenshots.
 // `images.unsplash.com` is allow-listed in next.config.mjs.

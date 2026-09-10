@@ -9,9 +9,10 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { experience, profile } from "@/data/portfolio";
+import { experience, profile, previews } from "@/data/portfolio";
 import { SectionHeading, EASE } from "./motion";
 import GridLines from "./GridLines";
+import HoverPreviewText from "./HoverPreviewText";
 
 function ExperienceRow({ job, index }) {
   const ref = useRef(null);
@@ -122,7 +123,7 @@ function ExperienceRow({ job, index }) {
                 </span>
               </div>
               <Image
-                src={job.image}
+                src={previews.byCompany[job.company]?.[0]?.src ?? job.image}
                 alt={`${job.company} preview`}
                 width={288}
                 height={192}
@@ -173,7 +174,9 @@ export default function Experience() {
             <>
               Years of
               <br />
-              <span className="text-white/35">crafting the web</span>
+              <HoverPreviewText images={previews.hero} className="text-white/35">
+                crafting the web
+              </HoverPreviewText>
             </>
           }
         />
