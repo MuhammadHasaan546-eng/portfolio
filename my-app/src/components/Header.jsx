@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 import { EASE } from "./motion";
+import { useEntrance } from "./EntranceContext";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { released } = useEntrance();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -21,14 +23,14 @@ export default function Header() {
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={released ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
         className="fixed inset-x-0 top-4 z-50 flex justify-center px-4"
       >
         <div
           className={`flex w-full max-w-5xl items-center justify-between gap-3 rounded-full border px-3 py-2.5 transition-all duration-500 sm:px-4 ${scrolled
-              ? "border-ink/10 bg-white/80 shadow-[0_20px_60px_-20px_rgba(17,17,17,0.25)] backdrop-blur-xl"
-              : "border-ink/10 bg-white/70 backdrop-blur-md"
+            ? "border-ink/10 bg-white/80 shadow-[0_20px_60px_-20px_rgba(17,17,17,0.25)] backdrop-blur-xl"
+            : "border-ink/10 bg-white/70 backdrop-blur-md"
             }`}
         >
           {/* Logo */}

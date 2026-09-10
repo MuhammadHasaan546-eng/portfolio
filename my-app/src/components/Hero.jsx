@@ -6,6 +6,7 @@ import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { EASE, stagger, fadeUp } from "./motion";
 import GridLines from "./GridLines";
+import { useEntrance } from "./EntranceContext";
 
 const socialIcons = {
   GitHub: (
@@ -61,11 +62,27 @@ function SocialColumn() {
 }
 
 export default function Hero() {
+  const { released } = useEntrance();
+
   return (
     <section
       id="top"
       className="relative flex min-h-screen flex-col overflow-hidden bg-[#f4f4f0]"
     >
+      {released ? (
+        <HeroContent />
+      ) : (
+        /* placeholder preserves the layout + #top anchor until the splash
+           curtain lifts, so the entrance animations play in sync with it */
+        <div aria-hidden="true" className="min-h-screen" />
+      )}
+    </section>
+  );
+}
+
+function HeroContent() {
+  return (
+    <>
       {/* ================= LAYER 0 — background only (z-0, no pointer) ================= */}
       {/* Luxury animated background grid */}
       <GridLines variant="light" />
@@ -311,6 +328,6 @@ export default function Hero() {
           </span>
         </motion.div>
       </div>
-    </section>
+    </>
   );
 }

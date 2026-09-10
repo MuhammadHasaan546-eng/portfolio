@@ -3,6 +3,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Splash from "@/components/Splash";
+import { EntranceProvider } from "@/components/EntranceContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,16 +54,18 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${archivoBlack.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full" suppressHydrationWarning>
-        {/* Subtle noise overlay texture over the whole page */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none noise-overlay fixed inset-0 z-[100]"
-        />
-        {/* Custom interactive cursor (fine-pointer devices only) */}
-        <CustomCursor />
-        {/* Animated entrance splash (skipped for reduced-motion) */}
-        <Splash />
-        <SmoothScroll>{children}</SmoothScroll>
+        <EntranceProvider>
+          {/* Subtle noise overlay texture over the whole page */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none noise-overlay fixed inset-0 z-[100]"
+          />
+          {/* Custom interactive cursor (fine-pointer devices only) */}
+          <CustomCursor />
+          {/* Animated entrance splash (skipped for reduced-motion) */}
+          <Splash />
+          <SmoothScroll>{children}</SmoothScroll>
+        </EntranceProvider>
       </body>
     </html>
   );

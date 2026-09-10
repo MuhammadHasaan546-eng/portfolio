@@ -3,6 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE } from "./motion";
+import { useEntrance } from "./EntranceContext";
 
 const WORDS = ["DESIGN", "DEVELOPMENT", "NEXT.JS & MERN", "MUHAMMAD HASAAN"];
 const STEP = 640; // ms per word
@@ -23,11 +24,16 @@ const getRMserver = () => false;
 
 export default function Splash() {
     const reduced = useSyncExternalStore(subscribeRM, getRM, getRMserver);
+    const { release } = useEntrance();
     const [index, setIndex] = useState(0);
     const [done, setDone] = useState(false);
 
     useEffect(() => {
-        if (reduced) return;
+        if (reduced) {
+            // reduced-motion: skip the splash, reveal the page immediately
+            release();
+            return;
+        }
 
         const body = document.body;
         const prevOverflow = body.style.overflow;
@@ -37,7 +43,9 @@ export default function Splash() {
         const timers = WORDS.map((_, i) =>
             setTimeout(() => setIndex(i), i * STEP)
         );
-        // reveal the splash away, then unlock scrolling
+        // release the page exactly as the curtain starts lifting, so the
+        // Hero / Header entrance animations play in sync with the reveal
+        timers.push(setTimeout(release, total + 320));
         timers.push(setTimeout(() => setDone(true), total + 320));
         timers.push(setTimeout(() => {
             body.style.overflow = prevOverflow;
@@ -47,7 +55,7 @@ export default function Splash() {
             timers.forEach(clearTimeout);
             body.style.overflow = prevOverflow;
         };
-    }, [reduced]);
+    }, [reduced, release]);
 
     if (reduced) return null;
 

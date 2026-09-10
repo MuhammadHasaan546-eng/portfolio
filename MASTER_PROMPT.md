@@ -68,7 +68,15 @@ intentional — no stock-bootstrap look, no clutter.
    cycles “DESIGN → DEVELOPMENT → NEXT.JS & MERN → MUHAMMAD HASAAN”, then slides up
    (`y: -100%`) to unlock Lenis. Locked via `document.body.style.overflow`. Skipped for
    `prefers-reduced-motion` (detected with `useSyncExternalStore`).
-6. **Hover-preview text** — see `HoverPreviewText` below.
+6. **Entrance coordination (critical)** — the splash and the page reveal are synchronised
+   through a shared `EntranceProvider` / `useEntrance()` context. The splash calls
+   `release()` **at the exact moment the curtain starts lifting**; the Hero and Header
+   gate their entrance animations on that `released` flag, so the Hero (`#top`) reveal runs
+   *in sync with* the curtain — never as a detached later animation. The Hero shell
+   (preserving the `#top` anchor + `min-h-screen`) always renders; only its animated
+   content mounts on release. Reduced-motion releases immediately and a 6s failsafe
+   guarantees the page can never stay hidden.
+7. **Hover-preview text** — see `HoverPreviewText` below.
 
 ## SECTION SPEC (single-page, in order)
 
