@@ -116,7 +116,7 @@ export default function Services() {
       <GridLines variant="light" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
-          index="02"
+          index="03"
           label="Services"
           headline={
             <>

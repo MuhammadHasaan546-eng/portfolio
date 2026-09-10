@@ -19,7 +19,7 @@ export default function SelectedWork() {
       <GridLines variant="light" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <SectionHeading
-          index="01"
+          index="02"
           label="Selected Work"
           headline={
             <>
@@ -37,8 +37,8 @@ export default function SelectedWork() {
               key={c}
               onClick={() => setFilter(c)}
               className={`relative rounded-full px-5 py-2.5 font-grotesk text-sm tracking-wide transition-colors duration-300 ${filter === c
-                  ? "text-white"
-                  : "text-neutral-600 hover:text-neutral-900"
+                ? "text-white"
+                : "text-neutral-600 hover:text-neutral-900"
                 }`}
             >
               {filter === c && (

@@ -19,7 +19,7 @@ export default function Skills() {
 
             <div className="relative z-10 mx-auto max-w-7xl">
                 <SectionHeading
-                    index="03"
+                    index="04"
                     label="Skills"
                     headline={
                         <>

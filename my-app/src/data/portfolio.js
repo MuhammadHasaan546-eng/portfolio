@@ -14,6 +14,9 @@ export const profile = {
   location: "Charsadda, PK",
   available: true,
   totalExperienceYears: "2+",
+  // Public assets (served from /public)
+  resumeUrl: "/resume.pdf",
+  photoUrl: "/profile.jpg",
   socials: [
     {
       label: "GitHub",
@@ -36,6 +39,7 @@ export const profile = {
 
 export const navLinks = [
   { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },

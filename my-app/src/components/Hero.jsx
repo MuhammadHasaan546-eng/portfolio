@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { profile, avatarArt } from "@/data/portfolio";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import { profile } from "@/data/portfolio";
 import { EASE, stagger, fadeUp } from "./motion";
 import GridLines from "./GridLines";
 
@@ -189,6 +189,19 @@ export default function Hero() {
                   </span>
                 </a>
                 <a
+                  href={profile.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="group inline-flex items-center gap-2 rounded-full border border-neutral-900/15 px-6 py-4 text-sm font-medium text-neutral-800 transition-colors duration-300 hover:border-neutral-900/40 hover:text-neutral-900"
+                >
+                  <Download
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-y-0.5"
+                  />
+                  Resume
+                </a>
+                <a
                   href="#work"
                   className="group inline-flex items-center gap-2 text-sm font-medium text-neutral-700 transition-colors hover:text-neutral-900"
                 >
@@ -223,12 +236,12 @@ export default function Hero() {
                     </span>
                   </div>
                   <Image
-                    src={avatarArt}
-                    alt="Portrait of Muhammad Hasaan"
+                    src={profile.photoUrl}
+                    alt={`Portrait of ${profile.name} — ${profile.role}`}
                     width={420}
                     height={520}
                     priority
-                    className="relative h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="relative h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
                   {/* bottom info card inside photo */}
