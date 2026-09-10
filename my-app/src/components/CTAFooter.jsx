@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
@@ -9,6 +9,13 @@ import { EASE } from "./motion";
 
 export default function CTAFooter() {
   const [copied, setCopied] = useState(false);
+  // Render a deterministic year on the server, then sync to the real year on
+  // the client after hydration to avoid a server/client mismatch.
+  const [year, setYear] = useState(2025);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   const copyEmail = async () => {
     try {
@@ -69,7 +76,7 @@ export default function CTAFooter() {
           >
             {"Let's turn your idea into a high-end digital experience. I'm"}
             {" "}
-            currently accepting new projects for {new Date().getFullYear()}.
+            currently accepting new projects for {year}.
           </motion.p>
 
           {/* dynamic contact button */}
@@ -185,7 +192,7 @@ export default function CTAFooter() {
               </a>
               <p className="mt-2 text-sm text-white/50">{profile.location}</p>
               <p className="mt-6 font-grotesk text-xs uppercase tracking-[0.2em] text-white/40">
-                {new Date().getFullYear()} © All rights reserved
+                {year} © All rights reserved
               </p>
             </div>
           </div>

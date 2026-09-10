@@ -9,16 +9,20 @@ export const profile = {
   role: "Full-Stack Web Developer",
   tagline: "Crafting high-end digital experiences with obsession over detail.",
   pitch:
-    "I design and engineer bold, minimal products for ambitious teams — blending disciplined engineering with luxury-grade aesthetics. Based in Pakistan, working worldwide.",
-  email: "hello@hasaan.dev",
-  location: "Karachi, PK",
+    "I design and engineer bold, minimal products with Next.js and modern web technologies — blending disciplined engineering with luxury-grade aesthetics. Based in Charsadda, Pakistan, working worldwide.",
+  email: "muhammadhassanweb@gmail.com",
+  location: "Charsadda, Pakistan",
   available: true,
-  totalExperienceYears: "5+",
+  totalExperienceYears: "2+",
   socials: [
-    { label: "GitHub", handle: "@hasaanm", url: "https://github.com" },
-    { label: "LinkedIn", handle: "in/hasaanm", url: "https://linkedin.com" },
-    { label: "Email", handle: "hello@hasaan.dev", url: "mailto:hello@hasaan.dev" },
-    { label: "Twitter / X", handle: "@hasaanm", url: "https://x.com" },
+    { label: "GitHub", handle: "@muhammadhasaan", url: "https://github.com" },
+    { label: "LinkedIn", handle: "in/muhammadhasaan", url: "https://linkedin.com" },
+    {
+      label: "Email",
+      handle: "muhammadhassanweb@gmail.com",
+      url: "mailto:muhammadhassanweb@gmail.com",
+    },
+    { label: "Twitter / X", handle: "@muhammadhasaan", url: "https://x.com" },
   ],
 };
 

@@ -4,15 +4,19 @@
 /* Design tokens                       */
 /* ---------------------------------- */
 :root {
-  --background: #f4f3ef; /* warm off-white / light gray */
-  --foreground: #111111; /* deep obsidian ink */
+  --background: #f4f3ef;
+  /* warm off-white / light gray */
+  --foreground: #111111;
+  /* deep obsidian ink */
   --surface: #ffffff;
   --muted: #6f6e69;
   --line: rgba(17, 17, 17, 0.12);
   --line-dark: rgba(255, 255, 255, 0.14);
-  --obsidian: #111111; /* deep obsidian black/charcoal */
+  --obsidian: #111111;
+  /* deep obsidian black/charcoal */
   --obsidian-soft: #1a1a1a;
-  --accent: #e6e1d6; /* champagne accent for the dark theme */
+  --accent: #e6e1d6;
+  /* champagne accent for the dark theme */
 }
 
 @theme inline {
@@ -109,10 +113,17 @@ body {
   -webkit-text-stroke: 2px rgba(255, 255, 255, 0.22);
 }
 
+/* Hero watermark — ultra-subtle outline that must stay strictly behind content */
+.hero-watermark {
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.08);
+  color: transparent;
+}
+
 /* hide scrollbar for filter bar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -131,6 +142,7 @@ body {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {

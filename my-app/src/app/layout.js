@@ -46,9 +46,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${archivoBlack.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="min-h-full" suppressHydrationWarning>
         {/* Subtle noise overlay texture over the whole page */}
         <div
           aria-hidden="true"
